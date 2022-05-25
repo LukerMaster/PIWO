@@ -1,7 +1,7 @@
 ﻿namespace PIWO_Core.Interfaces
 {
     /// <summary>
-    /// Interface that allows for creation and managing of new
+    /// Interface that allows for creation and managing of database
     /// context.
     /// </summary>
     public interface IDbManager

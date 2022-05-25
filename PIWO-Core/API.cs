@@ -1,5 +1,6 @@
 ﻿using PIWO_Core.Database;
 using PIWO_Core.FileParsing;
+using PIWO_Core.FileParsing.Strategies;
 using PIWO_Core.Interfaces;
 
 namespace PIWO_Core
@@ -19,16 +20,22 @@ namespace PIWO_Core
             return new DbManager();
         }
 
+        /// <summary>
+        ///  Creates a new instance of file manager.
+        /// </summary>
+        /// <param name="type">The type of file manager to use.</param>
+        /// <returns>New file manager</returns>
+        /// <exception cref="ArgumentOutOfRangeException">Throws when given wrong type of manager</exception>
         public static IFileManager CreateFileManager(FileType type)
         {
             switch (type)
-            {
+            { // SUS. Maybe spring isn't that bad of an idea afterall...? :thonk:
                 case FileType.Xml:
-                    return new XmlFileManager();
+                    return new FileManager(new XmlFileStrategy());
                 case FileType.Yaml:
-                    return new YamlFileManager();
+                    return new FileManager(new YamlFileStategy());
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(type), type, null);
+                    throw new ArgumentOutOfRangeException(nameof(type), type, "Wrong type of file manager given to creating method.");
             }
         }
 

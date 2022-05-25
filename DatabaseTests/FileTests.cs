@@ -40,7 +40,7 @@ namespace DatabaseTests
             DbSet<Alcohol> alcohols = context.Alcohols;
             
             foreach (var alcohol in alcohols) alcohols.Remove(alcohol);
-            Api.CreateFileManager(FileType.Xml).AddFromFile("tests_outAlcohols2.xml",ref alcohols);
+            Api.CreateFileManager(FileType.Xml).AddFromFile("tests_outAlcohols2.xml", alcohols);
             context.SaveChanges();
         }
         [Test]
@@ -57,7 +57,7 @@ namespace DatabaseTests
             DbSet<Alcohol> alcohols = context.Alcohols;
 
             foreach (var alcohol in alcohols) alcohols.Remove(alcohol);
-            Api.CreateFileManager(FileType.Yaml).AddFromFile("tests_outAlcohols.yaml", ref alcohols);
+            Api.CreateFileManager(FileType.Yaml).AddFromFile("tests_outAlcohols.yaml", alcohols);
             context.SaveChanges();
         }
     }

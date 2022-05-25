@@ -14,7 +14,14 @@ namespace PIWO_Core.Interfaces
         public DbSet<Shop> Shops { get; set; }
         public DbSet<Purchase> Purchases { get; set; }
         internal DatabaseFacade Database { get; }
+        /// <summary>
+        /// Closes the connection to the database. Does not save changes.
+        /// </summary>
         public void CloseConnection();
+        /// <summary>
+        /// Saves the changes made locally to objects.
+        /// </summary>
+        /// <returns>Number of rows affected in the database.</returns>
         public int SaveChanges();
     }
 }
