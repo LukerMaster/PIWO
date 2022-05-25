@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PIWO_Core.Database.Entities
+﻿namespace PIWO_Core.Database.Entities
 {
     public enum AlcoholTypeId
     {
@@ -21,7 +15,7 @@ namespace PIWO_Core.Database.Entities
         Tequila,
         RectifiedSpirit,
     }
-    public class AlcoholType
+    internal class AlcoholType
     {
         public AlcoholTypeId Id { get; set; }
         public string Name { get; set; }

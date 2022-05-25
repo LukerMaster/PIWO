@@ -1,4 +1,3 @@
-using PIWO_Core.Database;
 using PIWO_Core.Database.Entities;
 using PIWO_Core.Interfaces;
 
@@ -16,7 +15,7 @@ namespace DatabaseTests
         [OneTimeSetUp]
         public void CreateDb()
         {
-            Context = PIWO_Core.API.CreateDbManager().CreateAlcoholsDatabase(ConnectionString);
+            Context = PIWO_Core.Api.CreateDbManager().CreateAlcoholsDatabase(ConnectionString);
         }
 
         [OneTimeTearDown]
@@ -38,7 +37,10 @@ namespace DatabaseTests
                 TypeId = typeId,
                 Voltage = (decimal)voltage,
             });
+
+            Alcohol? a = Context.Alcohols.FirstOrDefault();
             Context.SaveChanges();
+            if (a != null) Assert.Pass("Returned: " + a.Name);
         }
     }
 }
