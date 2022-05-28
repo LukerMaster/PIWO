@@ -6,7 +6,7 @@
     /// </summary>
     public interface IDbManager
     {
-        public IAlcoholContext CreateAlcoholsDatabase(string ConnectionString);
-        public IAlcoholContext ConnectToDatabase(string ConnectionString);
+        public IAlcoholContext CreateAlcoholsDatabase(string connectionString);
+        public IAlcoholContext ConnectToDatabase(string connectionString);
     }
 }

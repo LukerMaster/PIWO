@@ -34,13 +34,13 @@ namespace PIWO_Core.API
         {
             internal CityPurchasesData(City city, decimal vol, int pur)
             {
-                this.city = city;
-                this.alcoholVolume = vol;
-                this.purchases = pur;
+                this.City = city;
+                this.AlcoholVolume = vol;
+                this.Purchases = pur;
             }
-            public City city;
-            public decimal alcoholVolume;
-            public int purchases;
+            public City City;
+            public decimal AlcoholVolume;
+            public int Purchases;
         }
 
         /// <summary>
