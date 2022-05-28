@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PIWO_Core;
+using PIWO_Core.API;
 using PIWO_Core.Database.Entities;
 
 namespace DatabaseTests
@@ -55,7 +56,7 @@ namespace DatabaseTests
             var context = Api.CreateDbManager().ConnectToDatabase(ConnectionString);
 
             DbSet<Alcohol> alcohols = context.Alcohols;
-
+            
             foreach (var alcohol in alcohols) alcohols.Remove(alcohol);
             Api.CreateFileManager(FileType.Yaml).AddFromFile("tests_outAlcohols.yaml", alcohols);
             context.SaveChanges();

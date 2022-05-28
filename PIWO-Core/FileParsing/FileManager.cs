@@ -16,7 +16,7 @@ namespace PIWO_Core.FileParsing
 
         public void SaveToFile<T>(string filepath, DbSet<T> tableToSave) where T : class
         {
-            if (tableToSave == null) { throw new NullReferenceException("Table given for XML serialization is null."); }
+            if (tableToSave == null) { throw new NullReferenceException("Table given for serialization is null."); }
 
             List<T> dataToSave = new List<T>();
 
@@ -29,7 +29,7 @@ namespace PIWO_Core.FileParsing
 
         public void AddFromFile<T>(string filepath, DbSet<T> tableToAddTo) where T: class
         {
-            if (tableToAddTo == null) { throw new NullReferenceException("Table given for XML deserialization is null."); }
+            if (tableToAddTo == null) { throw new NullReferenceException("Table given for deserialization is null."); }
             if (!File.Exists(filepath)) throw new Exception("File to read " + filepath + " does not exist.");
 
             List<T> objectsToGet = _fileParsingStrategy.Load<T>(filepath);
