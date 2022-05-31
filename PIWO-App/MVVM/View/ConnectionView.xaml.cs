@@ -40,9 +40,7 @@ namespace PIWO_App.MVVM.View
             _name = name.Text;
             _server = server.Text;
             _port = port.Text;
-            
-            IDbManager dbManager = DatabaseConnector.GetInstance();
-            IAlcoholContext alcoholContext = dbManager.ConnectToPostgreSqlDatabase(_login, _password, _server, _port, _name);
+            AlcoholContext.CreateContext(_login, _password, _server, _name, _port);
 
         }
     }
