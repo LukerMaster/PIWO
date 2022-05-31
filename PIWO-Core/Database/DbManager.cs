@@ -45,7 +45,7 @@ namespace PIWO_Core.Database
         /// <exception cref="Exception"></exception>
         public IAlcoholContext ConnectToPostgreSqlDatabase(string login, string password, string server, string port, string dbName, bool createIfNonexistent = false)
         {
-            var connectionString = $"User ID={login};Password={password};Host={server};Port={port};Database={dbName};");
+            var connectionString = $"User ID={login};Password={password};Host={server};Port={port};Database={dbName};";
 
             if (createIfNonexistent)
                 CreateAlcoholsDatabase(connectionString);
