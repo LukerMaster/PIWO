@@ -44,7 +44,7 @@
         <TextBox Grid.Row="0"
                  Grid.Column="1"
             Name="login"
-                   Foreground="White"/>
+                   />
         <TextBox Grid.Row="1"
                  Grid.Column="1"
             Name="password"/>

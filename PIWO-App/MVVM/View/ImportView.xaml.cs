@@ -16,6 +16,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using PIWO_Core;
 using PIWO_Core.Interfaces;
+using PIWO_Core.FileParsing;
+using PIWO_Core.FileParsing.Strategies;
+using PIWO_App.Core;
 
 namespace PIWO_App.MVVM.View
 {
@@ -39,7 +42,7 @@ namespace PIWO_App.MVVM.View
 
         private void openFileBtnClick(object sender, RoutedEventArgs e)
         {
-
+            IAlcoholContext alcoholContext = AlcoholContext.GetAlcohol();
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = checkFileType();
             if (openFileDialog.ShowDialog() == true)

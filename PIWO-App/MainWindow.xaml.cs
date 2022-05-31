@@ -24,5 +24,15 @@ namespace PIWO_App
         {
             InitializeComponent();
         }
+
+        private void close_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void mouseDrag(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
     }
 }
