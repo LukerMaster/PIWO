@@ -15,7 +15,9 @@ namespace DatabaseTests
         [OneTimeSetUp]
         public void CreateDb()
         {
-            Context = PIWO_Core.Api.CreateDbManager().CreateAlcoholsDatabase(ConnectionString);
+            Context = PIWO_Core.Api.CreateDbManager()
+                .ConnectToPostgreSqlDatabase("postgres", "x", "localhost", "5432", "PIWOPALIWO", true);
+            //Context = PIWO_Core.Api.CreateDbManager().CreateAlcoholsDatabase(ConnectionString);
         }
 
         [OneTimeTearDown]
