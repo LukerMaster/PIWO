@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using PIWO_Core;
+using PIWO_App.Core;
+using PIWO_Core.Interfaces;
 
 namespace PIWO_App.MVVM.View
 {
@@ -21,6 +23,11 @@ namespace PIWO_App.MVVM.View
     /// </summary>
     public partial class ConnectionView : UserControl
     {
+        private string _login;
+        private string _password;
+        private string _name;
+        private string _server;
+        private string _port;
         public ConnectionView()
         {
             InitializeComponent();
@@ -28,6 +35,14 @@ namespace PIWO_App.MVVM.View
 
         private void connectBtnClick(object sender, RoutedEventArgs e)
         {
+            _login = login.Text;
+            _password = password.Text;
+            _name = name.Text;
+            _server = server.Text;
+            _port = port.Text;
+            
+            IDbManager dbManager = DatabaseConnector.GetInstance();
+            IAlcoholContext alcoholContext = dbManager.ConnectToPostgreSqlDatabase(_login, _password, _server, _port, _name);
 
         }
     }
