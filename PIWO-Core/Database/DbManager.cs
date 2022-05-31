@@ -7,7 +7,7 @@ namespace PIWO_Core.Database
     {
         private IAlcoholContext? _dbContext;
 
-        private IAlcoholContext CreateOrConnectToDb(string connectionString, bool createIfNonexistent = false)
+        private void CreateOrConnectToDb(string connectionString, bool createIfNonexistent = false)
         {
             _dbContext = Api.MakeAlcoholContext(connectionString);
             if (createIfNonexistent)
@@ -16,19 +16,17 @@ namespace PIWO_Core.Database
             if (!_dbContext.Database.CanConnect())
                 throw new Exception(
                     $"Cannot connect to the database - Connection string given: {_dbContext.Database.GetConnectionString()}");
-
-            return _dbContext;
         }
 
         public IAlcoholContext CreateAlcoholsDatabase(string connectionString)
         {
-            _dbContext = CreateOrConnectToDb(connectionString, true);
+            CreateOrConnectToDb(connectionString, true);
             return _dbContext;
         }
 
         public IAlcoholContext ConnectToDatabase(string connectionString)
         {
-            _dbContext = CreateOrConnectToDb(connectionString, false);
+            CreateOrConnectToDb(connectionString, false);
             return _dbContext;
         }
 
