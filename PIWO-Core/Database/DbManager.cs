@@ -22,13 +22,13 @@ namespace PIWO_Core.Database
 
         public IAlcoholContext CreateAlcoholsDatabase(string connectionString)
         {
-            CreateOrConnectToDb(connectionString, true);
+            _dbContext = CreateOrConnectToDb(connectionString, true);
             return _dbContext;
         }
 
         public IAlcoholContext ConnectToDatabase(string connectionString)
         {
-            CreateOrConnectToDb(connectionString, false);
+            _dbContext = CreateOrConnectToDb(connectionString, false);
             return _dbContext;
         }
 
