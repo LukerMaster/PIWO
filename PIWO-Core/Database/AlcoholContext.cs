@@ -24,7 +24,7 @@ namespace PIWO_Core.Database
         public DbSet<AlcoholType> AlcoholTypes { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options) => options.UseNpgsql(ConnectionString);
-
+        
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder
