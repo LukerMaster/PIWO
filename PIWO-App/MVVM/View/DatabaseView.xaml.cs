@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using PIWO_App.Core;
+using PIWO_Core;
+using PIWO_Core.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +27,13 @@ namespace PIWO_App.MVVM.View
         public DatabaseView()
         {
             InitializeComponent();
+        }
+
+
+        private void RadioButton_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            IAlcoholContext alcohol = AlcoholContext.GetAlcohol();
+           
         }
     }
 }

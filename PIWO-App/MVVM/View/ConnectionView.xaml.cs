@@ -28,6 +28,7 @@ namespace PIWO_App.MVVM.View
         private string _name;
         private string _server;
         private string _port;
+        private bool _create;
         public ConnectionView()
         {
             InitializeComponent();
@@ -40,7 +41,17 @@ namespace PIWO_App.MVVM.View
             _name = name.Text;
             _server = server.Text;
             _port = port.Text;
-            AlcoholContext.CreateContext(_login, _password, _server, _name, _port);
+            if(createCheckBox.IsChecked == true)
+                _create =true;
+            else
+                _create =false;
+
+            AlcoholContext.CreateContext(_login, _password, _server, _name, _port, _create);
+
+
+            if (AlcoholContext.IsReady)
+                isConnected.IsChecked = true;
+
 
         }
     }

@@ -14,6 +14,7 @@
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
 
@@ -44,24 +45,50 @@
         <TextBox Grid.Row="0"
                  Grid.Column="1"
             Name="login"
+                Style="{StaticResource ModernTextBox}"
+                 Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
                    />
         <TextBox Grid.Row="1"
                  Grid.Column="1"
-            Name="password"/>
+            Name="password"
+                 Style="{StaticResource ModernTextBox}"
+                  Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"/>
         <TextBox Grid.Row="2"
                  Grid.Column="1"
-                   Name="name"/>
+                   Name="name"
+                 Style="{StaticResource ModernTextBox}"
+                  Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"/>
         <TextBox Grid.Row="3"
                  Grid.Column="1"
-                   Name="server"/>
+                   Name="server"
+                 Style="{StaticResource ModernTextBox}"
+                  Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"/>
         <TextBox Grid.Row="4"
                  Grid.Column="1"
-                   Name="port"/>
+                   Name="port"
+                 Style="{StaticResource ModernTextBox}"
+                  Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"/>
         <Button Name="connect"
                 Background="Transparent"
                 Foreground="White"
                 FontSize="24"
                 Grid.Row="5"
                 Click="connectBtnClick">Connect</Button>
+
+        <CheckBox Content="Do you want to create Database ?"
+                  Grid.Row="5"
+                  Grid.Column="1"
+                  FontSize="18"
+                  Foreground="White"
+                  VerticalAlignment="Center"
+                  IsChecked="False"
+                  Name="createCheckBox"/>
+        <CheckBox Content="Connected"
+                  IsEnabled="False"
+                  Name="isConnected"
+                  Grid.Row="6"
+                  Foreground="White"
+                  FontSize="18"
+                  />
     </Grid>
 </UserControl>

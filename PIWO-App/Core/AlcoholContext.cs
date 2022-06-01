@@ -22,13 +22,13 @@ namespace PIWO_App.Core
             return alcohol;
         }
 
-        public static IAlcoholContext CreateContext(string login, string password, string server, string dbName, string port)
+        public static IAlcoholContext CreateContext(string login, string password, string server, string dbName, string port, bool create)
         {
-            alcohol = Api.CreateDbManager().ConnectToPostgreSqlDatabase(login, password, server, port, dbName, true);
+            alcohol = Api.CreateDbManager().ConnectToPostgreSqlDatabase(login, password, server, port, dbName, create);
             isReady = true;
             return alcohol;
         }
 
-        public bool IsReady { get { return isReady; } }
+        public static bool IsReady { get { return isReady; } }
     }
 }

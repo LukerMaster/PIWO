@@ -16,7 +16,6 @@ namespace PIWO_App.MVVM.ViewModel
         public ExportViewModel ExportVm { get; set; }
         public DatabaseViewModel DatabaseVm { get; set; }
         public ConnectionViewModel ConnectionVm { get; set; }
-        public IDbManager dbManager;
 
         public RelayCommand HomeViewCommand { get; set; }
         public RelayCommand ImportViewCommand { get; set; }
@@ -25,7 +24,6 @@ namespace PIWO_App.MVVM.ViewModel
 
         public RelayCommand ConnectionViewCommand { get; set; }
 
-        public RelayCommand Command { get; set; }
 
         private object _currentView;
 
@@ -46,7 +44,6 @@ namespace PIWO_App.MVVM.ViewModel
             ExportVm = new ExportViewModel();
             DatabaseVm = new DatabaseViewModel();
             ConnectionVm = new ConnectionViewModel();   
-            dbManager = Api.CreateDbManager();
             CurrentView = HomeVm;
 
             HomeViewCommand = new RelayCommand(o =>
@@ -69,10 +66,6 @@ namespace PIWO_App.MVVM.ViewModel
                 CurrentView = DatabaseVm;
             });
 
-            Command = new RelayCommand(o =>
-            {
-
-            });
 
             ConnectionViewCommand = new RelayCommand(o =>
             {

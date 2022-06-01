@@ -33,7 +33,7 @@
                                  FontSize="14"
                                  Style="{StaticResource MenuButtonTheme}"
                                  IsChecked="True"
-                                 Command="{Binding HomeViewCommand}"/>
+                                 MouseDoubleClick="RadioButton_MouseDoubleClick"/>
                 <RadioButton Content="Shops"
                              HorizontalContentAlignment="Center"
                              VerticalContentAlignment="Center"
@@ -67,7 +67,7 @@
                                  Style="{StaticResource MenuButtonTheme}"
                                  Command="{Binding ImportExportViewCommand}"/>
             </StackPanel>
-            <TextBlock Grid.Row="2"
+            <TextBox Grid.Row="2"
                        Name="data"/>
 
         </Grid>
