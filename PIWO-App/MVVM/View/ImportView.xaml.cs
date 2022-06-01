@@ -31,22 +31,26 @@ namespace PIWO_App.MVVM.View
         {
             InitializeComponent();
         }
-        private string checkFileType()
+        private FileType checkFileType()
         {
-            if (XMLRadio.IsChecked == true)
-                return "XML files (*.xml)|*.xml|All files (*.*)|*.*";
-            else if (YAMLRadio.IsChecked == true)
-                return "YAML files (*.yaml)|*.yaml|All files (*.*)|*.*";
-            return "All files(*.*) | *.* ";
+            if (YAMLRadio.IsChecked == true)
+                return FileType.Yaml;
+            return FileType.Xml;
         }
 
         private void openFileBtnClick(object sender, RoutedEventArgs e)
         {
             IAlcoholContext alcoholContext = AlcoholContext.GetAlcohol();
+            IFileManager fileManager = Api.CreateFileManager(checkFileType());
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = checkFileType();
+
             if (openFileDialog.ShowDialog() == true)
-                txtEditor.Text = File.ReadAllText(openFileDialog.FileName);
+            {
+                string directoryPath = System.IO.Path.GetDirectoryName(openFileDialog.FileName);
+                fileManager.AddFromFile(directoryPath, alcoholContext.Cities);
+            }
+
+
         }
     }
 }
