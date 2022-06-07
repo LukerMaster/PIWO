@@ -33,7 +33,8 @@
                                  FontSize="14"
                                  Style="{StaticResource MenuButtonTheme}"
                                  IsChecked="True"
-                                 MouseDoubleClick="RadioButton_MouseDoubleClick"/>
+                                 Click="RadioButton_Click"
+                             MouseDoubleClick="RadioButton_MouseDoubleClick"/>
                 <RadioButton Content="Shops"
                              HorizontalContentAlignment="Center"
                              VerticalContentAlignment="Center"
@@ -41,7 +42,7 @@
                                  Foreground="White"
                                  FontSize="14"
                                  Style="{StaticResource MenuButtonTheme}"
-                                 Command="{Binding ImportExportViewCommand}"/>
+                                 Click="RadioButton_Click"/>
                 <RadioButton Content="Cities"
                              HorizontalContentAlignment="Center"
                              VerticalContentAlignment="Center"
@@ -49,7 +50,7 @@
                                  Foreground="White"
                                  FontSize="14"
                                  Style="{StaticResource MenuButtonTheme}"
-                                 Command="{Binding ImportExportViewCommand}"/>
+                                 Click="RadioButton_Click"/>
                 <RadioButton Content="Purchases"
                              HorizontalContentAlignment="Center"
                              VerticalContentAlignment="Center"
@@ -57,18 +58,19 @@
                                  Foreground="White"
                                  FontSize="14"
                                  Style="{StaticResource MenuButtonTheme}"
-                                 Command="{Binding ImportExportViewCommand}"/>
-                <RadioButton Content="Alcohol types"
-                             HorizontalContentAlignment="Center"
-                             VerticalContentAlignment="Center"
-                                 Height="50"
-                                 Foreground="White"
-                                 FontSize="14"
-                                 Style="{StaticResource MenuButtonTheme}"
-                                 Command="{Binding ImportExportViewCommand}"/>
+                                 Click="RadioButton_Click"/>
             </StackPanel>
-            <TextBox Grid.Row="2"
-                       Name="data"/>
+            <DataGrid Grid.Row="2" 
+                      Name="dataBaseView"
+                      AutoGenerateColumns="True"
+                      HorizontalAlignment="Left"
+                      VerticalAlignment="Top"
+                      
+                      IsEnabled="False"
+                      >
+                
+            </DataGrid>
+	
 
         </Grid>
 

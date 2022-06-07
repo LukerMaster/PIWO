@@ -1,4 +1,7 @@
 ﻿using Microsoft.Win32;
+using PIWO_App.Core;
+using PIWO_Core;
+using PIWO_Core.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -26,24 +29,37 @@ namespace PIWO_App.MVVM.View
         {
             InitializeComponent();
         }
-        private string checkFileType()
+        private FileType checkFileType()
         {
-            if (XMLRadio.IsChecked == true)
-                return "XML files (*.xml)|*.xml|All files (*.*)|*.*";
-            else if (YAMLRadio.IsChecked == true)
-                return "YAML files (*.yaml)|*.yaml|All files (*.*)|*.*";
-            return "All files(*.*) | *.* ";
+            if (YAMLRadio.IsChecked == true)
+                return FileType.Yaml;
+            return FileType.Xml;
         }
+        private string setFilter()
+        {
+            if (YAMLRadio.IsChecked == true)
+                return "YAML|*.yaml";
+            return "XML|*.xml";
+        }
+
 
         private void saveFileBtnClick(object sender, RoutedEventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = checkFileType();
+            IAlcoholContext alcoholContext = AlcoholContext.GetAlcohol();
+            IFileManager fileManager = Api.CreateFileManager(checkFileType());
+            saveFileDialog.Filter = setFilter();
             if (saveFileDialog.ShowDialog() == true)
             {
-
-                string filename = saveFileDialog.FileName;
-                File.WriteAllText(filename, txtEditor.Text);
+                if (cities.IsChecked == true)
+                    fileManager.SaveToFile(saveFileDialog.FileName, alcoholContext.Cities);
+                else if (shops.IsChecked == true)
+                    fileManager.SaveToFile(saveFileDialog.FileName, alcoholContext.Shops);
+                else if (purchases.IsChecked == true)
+                    fileManager.SaveToFile(saveFileDialog.FileName, alcoholContext.Purchases);
+                else if (alcohols.IsChecked == true)
+                    fileManager.SaveToFile(saveFileDialog.FileName, alcoholContext.Alcohols);
+                alcoholContext.SaveChanges();
             }
         }
     }

@@ -61,7 +61,7 @@
 
                 </Style>
             </StackPanel.Resources>
-            <TextBlock Text="Nasze kochane menele"
+            <TextBlock Text="Naszes"
                    Foreground="White"
                    FontSize="20"
                    HorizontalAlignment="Left"

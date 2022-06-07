@@ -19,6 +19,7 @@ using PIWO_Core.Interfaces;
 using PIWO_Core.FileParsing;
 using PIWO_Core.FileParsing.Strategies;
 using PIWO_App.Core;
+using Microsoft.EntityFrameworkCore;
 
 namespace PIWO_App.MVVM.View
 {
@@ -38,16 +39,33 @@ namespace PIWO_App.MVVM.View
             return FileType.Xml;
         }
 
+        private string setFilter()
+        {
+            if (YAMLRadio.IsChecked == true)
+                return "YAML|*.yaml"; 
+            return "XML|*.xml";
+        }
+
+     
+
         private void openFileBtnClick(object sender, RoutedEventArgs e)
         {
             IAlcoholContext alcoholContext = AlcoholContext.GetAlcohol();
             IFileManager fileManager = Api.CreateFileManager(checkFileType());
             OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = setFilter();
 
             if (openFileDialog.ShowDialog() == true)
             {
-                string directoryPath = System.IO.Path.GetDirectoryName(openFileDialog.FileName);
-                fileManager.AddFromFile(directoryPath, alcoholContext.Cities);
+                if (cities.IsChecked == true)
+                    fileManager.AddFromFile(openFileDialog.FileName, alcoholContext.Cities);
+                else if (shops.IsChecked == true)
+                    fileManager.AddFromFile(openFileDialog.FileName, alcoholContext.Shops);
+                else if(purchases.IsChecked == true)
+                     fileManager.AddFromFile(openFileDialog.FileName, alcoholContext.Purchases);
+                else if (alcohols.IsChecked == true)
+                    fileManager.AddFromFile(openFileDialog.FileName, alcoholContext.Alcohols);
+                alcoholContext.SaveChanges();
             }
 
 

@@ -33,7 +33,30 @@ namespace PIWO_App.MVVM.View
         private void RadioButton_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             IAlcoholContext alcohol = AlcoholContext.GetAlcohol();
-           
+            dataBaseView.ItemsSource = alcohol.Alcohols.Local.ToObservableCollection();
+
+        }
+
+
+        private void RadioButton_Click(object sender, RoutedEventArgs e)
+        {
+            RadioButton radioButton = sender as RadioButton;
+            IAlcoholContext alcohol = AlcoholContext.GetAlcohol();
+            switch (radioButton.Content.ToString())
+            {
+                case "Alcohols":
+                    dataBaseView.ItemsSource = alcohol.Alcohols.Local.ToObservableCollection();
+                    break;
+                case "Purchases":
+                    dataBaseView.ItemsSource = alcohol.Purchases.Local.ToObservableCollection();
+                    break;
+                case "Shops":
+                    dataBaseView.ItemsSource = alcohol.Shops.Local.ToObservableCollection();
+                    break;
+                case "Cities":
+                    dataBaseView.ItemsSource = alcohol.Cities.Local.ToObservableCollection();
+                    break;
+            }
         }
     }
 }

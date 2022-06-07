@@ -32,6 +32,11 @@ namespace PIWO_App.MVVM.View
         public ConnectionView()
         {
             InitializeComponent();
+            login.Text = "postgres";
+            password.Text = "admin";
+            name.Text = "PIWO-test";
+            server.Text = "localhost";
+            port.Text = "8008";
         }
 
         private void connectBtnClick(object sender, RoutedEventArgs e)

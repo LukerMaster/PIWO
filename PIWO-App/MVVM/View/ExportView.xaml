@@ -36,7 +36,7 @@
                                  FontSize="14"
                                  Style="{StaticResource MenuButtonTheme}"
                                  IsChecked="True"
-                                 Command="{Binding HomeViewCommand}"/>
+                                />
                 <RadioButton Name="YAMLRadio"
                              Content="YAML"
                              HorizontalContentAlignment="Center"
@@ -45,7 +45,7 @@
                                  Foreground="White"
                                  FontSize="14"
                                  Style="{StaticResource MenuButtonTheme}"
-                                 Command="{Binding ImportExportViewCommand}"/>
+                                 />
             </StackPanel>
             <TextBlock Grid.Row="2"
                        Text="Choose table"/>
@@ -53,6 +53,7 @@
             <StackPanel Grid.Row="3" 
                 Orientation="Horizontal">
                 <RadioButton Content="Alcohols"
+                             Name="alcohols"
                              HorizontalContentAlignment="Center"
                              VerticalContentAlignment="Center"
                                  Height="50"
@@ -60,39 +61,35 @@
                                  FontSize="14"
                                  Style="{StaticResource MenuButtonTheme}"
                                  IsChecked="True"
-                                 Command="{Binding HomeViewCommand}"/>
+                                />
                 <RadioButton Content="Shops"
+                             Name="shops"
                              HorizontalContentAlignment="Center"
                              VerticalContentAlignment="Center"
                                  Height="50"
                                  Foreground="White"
                                  FontSize="14"
                                  Style="{StaticResource MenuButtonTheme}"
-                                 Command="{Binding ImportExportViewCommand}"/>
+                                 />
                 <RadioButton Content="Cities"
+                             Name="cities"
                              HorizontalContentAlignment="Center"
                              VerticalContentAlignment="Center"
                                  Height="50"
                                  Foreground="White"
                                  FontSize="14"
                                  Style="{StaticResource MenuButtonTheme}"
-                                 Command="{Binding ImportExportViewCommand}"/>
+                                 />
                 <RadioButton Content="Purchases"
+                             Name="purchases"
                              HorizontalContentAlignment="Center"
                              VerticalContentAlignment="Center"
                                  Height="50"
                                  Foreground="White"
                                  FontSize="14"
                                  Style="{StaticResource MenuButtonTheme}"
-                                 Command="{Binding ImportExportViewCommand}"/>
-                <RadioButton Content="Alcohol types"
-                             HorizontalContentAlignment="Center"
-                             VerticalContentAlignment="Center"
-                                 Height="50"
-                                 Foreground="White"
-                                 FontSize="14"
-                                 Style="{StaticResource MenuButtonTheme}"
-                                 Command="{Binding ImportExportViewCommand}"/>
+                                 />
+               
             </StackPanel>
 
             <TextBlock Grid.Row="4"
@@ -106,7 +103,7 @@
                     >
                 Choose File
             </Button>
-            <TextBox Grid.Row="6"  Name="txtEditor" />
+            
 
         </Grid>
 

@@ -60,7 +60,7 @@
                                  FontSize="14"
                                  Style="{StaticResource MenuButtonTheme}"
                                  IsChecked="True"
-                                 Command="{Binding HomeViewCommand}"/>
+                                Name="alcohols"/>
                 <RadioButton Content="Shops"
                              HorizontalContentAlignment="Center"
                              VerticalContentAlignment="Center"
@@ -68,7 +68,7 @@
                                  Foreground="White"
                                  FontSize="14"
                                  Style="{StaticResource MenuButtonTheme}"
-                                 Command="{Binding ImportExportViewCommand}"/>
+                                 Name="shops"/>
                 <RadioButton Content="Cities"
                              HorizontalContentAlignment="Center"
                              VerticalContentAlignment="Center"
@@ -76,7 +76,7 @@
                                  Foreground="White"
                                  FontSize="14"
                                  Style="{StaticResource MenuButtonTheme}"
-                                 Command="{Binding ImportExportViewCommand}"/>
+                                 Name="cities"/>
                 <RadioButton Content="Purchases"
                              HorizontalContentAlignment="Center"
                              VerticalContentAlignment="Center"
@@ -84,15 +84,7 @@
                                  Foreground="White"
                                  FontSize="14"
                                  Style="{StaticResource MenuButtonTheme}"
-                                 Command="{Binding ImportExportViewCommand}"/>
-                <RadioButton Content="Alcohol types"
-                             HorizontalContentAlignment="Center"
-                             VerticalContentAlignment="Center"
-                                 Height="50"
-                                 Foreground="White"
-                                 FontSize="14"
-                                 Style="{StaticResource MenuButtonTheme}"
-                                 Command="{Binding ImportExportViewCommand}"/>
+                                 Name="purchases"/>
             </StackPanel>
 
             <TextBlock Grid.Row="4"
@@ -106,7 +98,7 @@
                     >
                 Choose File
             </Button>
-            <TextBox Grid.Row="6"  Name="txtEditor" />
+          
 
         </Grid>
 
