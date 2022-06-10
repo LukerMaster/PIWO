@@ -33,8 +33,9 @@ namespace PIWO_Core.FileParsing
             if (!File.Exists(filepath)) throw new Exception("File to read " + filepath + " does not exist.");
 
             List<T> objectsToGet = _fileParsingStrategy.Load<T>(filepath);
-
+            
             tableToAddTo.AddRange(objectsToGet);
+            
         }
     }
 }

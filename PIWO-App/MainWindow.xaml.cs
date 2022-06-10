@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PIWO_App.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace PIWO_App
         public MainWindow()
         {
             InitializeComponent();
+
         }
 
         private void close_Click(object sender, RoutedEventArgs e)

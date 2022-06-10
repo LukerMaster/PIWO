@@ -55,6 +55,7 @@
 
             <StackPanel Grid.Row="1">
                 <RadioButton Content="Home"
+                             Name="Home"
                              Height="50"
                              Foreground="White"
                              FontSize="14"
@@ -62,18 +63,21 @@
                              IsChecked="True"
                              Command="{Binding HomeViewCommand}"/>
                 <RadioButton Content="Import"
+                             Name="Import"
                              Height="50"
                              Foreground="White"
                              FontSize="14"
                              Style="{StaticResource MenuButtonTheme}"
                              Command="{Binding ImportViewCommand}"/>
                 <RadioButton Content="Export"
+                             Name="Export"
                              Height="50"
                              Foreground="White"
                              FontSize="14"
                              Style="{StaticResource MenuButtonTheme}"
                              Command="{Binding ExportViewCommand}"/>
                 <RadioButton Content="Database"
+                             Name="Database"
                              Height="50"
                              Foreground="White"
                              FontSize="14"

@@ -20,6 +20,7 @@ using PIWO_Core.FileParsing;
 using PIWO_Core.FileParsing.Strategies;
 using PIWO_App.Core;
 using Microsoft.EntityFrameworkCore;
+using System.Windows.Threading;
 
 namespace PIWO_App.MVVM.View
 {
@@ -31,6 +32,7 @@ namespace PIWO_App.MVVM.View
         public ImportView()
         {
             InitializeComponent();
+            fileChooserBtn.IsEnabled = AlcoholContext.IsReady;
         }
         private FileType checkFileType()
         {
@@ -50,22 +52,32 @@ namespace PIWO_App.MVVM.View
 
         private void openFileBtnClick(object sender, RoutedEventArgs e)
         {
-            IAlcoholContext alcoholContext = AlcoholContext.GetAlcohol();
-            IFileManager fileManager = Api.CreateFileManager(checkFileType());
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = setFilter();
-
-            if (openFileDialog.ShowDialog() == true)
+            try
             {
-                if (cities.IsChecked == true)
-                    fileManager.AddFromFile(openFileDialog.FileName, alcoholContext.Cities);
-                else if (shops.IsChecked == true)
-                    fileManager.AddFromFile(openFileDialog.FileName, alcoholContext.Shops);
-                else if(purchases.IsChecked == true)
-                     fileManager.AddFromFile(openFileDialog.FileName, alcoholContext.Purchases);
-                else if (alcohols.IsChecked == true)
-                    fileManager.AddFromFile(openFileDialog.FileName, alcoholContext.Alcohols);
-                alcoholContext.SaveChanges();
+                IAlcoholContext alcoholContext = AlcoholContext.GetAlcohol();
+                IFileManager fileManager = Api.CreateFileManager(checkFileType());
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                openFileDialog.Filter = setFilter();
+                if (openFileDialog.ShowDialog() == true)
+                {
+                    if (cities.IsChecked == true)
+                        fileManager.AddFromFile(openFileDialog.FileName, alcoholContext.Cities);
+                    else if (shops.IsChecked == true)
+                        fileManager.AddFromFile(openFileDialog.FileName, alcoholContext.Shops);
+                    else if (purchases.IsChecked == true)
+                        fileManager.AddFromFile(openFileDialog.FileName, alcoholContext.Purchases);
+                    else if (alcohols.IsChecked == true)
+                        fileManager.AddFromFile(openFileDialog.FileName, alcoholContext.Alcohols);
+                    alcoholContext.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, (Action)(() =>
+                {
+                    MessageBox.Show("Możliwa utrata spójności danych z racji na takie same klucze (A Bartka potrącił samochód).");
+                }));
+                
             }
 
 

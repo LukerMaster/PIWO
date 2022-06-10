@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using PIWO_Core;
 using PIWO_App.Core;
 using PIWO_Core.Interfaces;
+using System.Windows.Threading;
 
 namespace PIWO_App.MVVM.View
 {
@@ -37,6 +38,8 @@ namespace PIWO_App.MVVM.View
             name.Text = "PIWO-test";
             server.Text = "localhost";
             port.Text = "8008";
+
+            isConnected.IsChecked = AlcoholContext.IsReady;
         }
 
         private void connectBtnClick(object sender, RoutedEventArgs e)
@@ -50,14 +53,22 @@ namespace PIWO_App.MVVM.View
                 _create =true;
             else
                 _create =false;
-
-            AlcoholContext.CreateContext(_login, _password, _server, _name, _port, _create);
-
+            try
+            {
+                AlcoholContext.CreateContext(_login, _password, _server, _name, _port, _create);
+            }
+            catch (Exception ex)
+            {
+                Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, (Action)(() =>
+                {
+                    MessageBox.Show("Nie udało się połączyć do bazy danych (A Bartka potrącił samochód).");
+                }));
+            }
 
             if (AlcoholContext.IsReady)
                 isConnected.IsChecked = true;
 
-
+          
         }
     }
 }

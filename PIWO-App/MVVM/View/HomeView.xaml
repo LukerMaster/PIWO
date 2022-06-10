@@ -29,11 +29,11 @@
 
                 <Grid>
                     <StackPanel>
-                        <TextBlock Text="Piwo to moje paliwo&#x0a; eeeelo"
+                        <TextBlock Text="Hiper Advanced &#x0a;PIWO and Alcohol Analyser"
                                    Foreground="White"
                                    FontSize="28"
                                    Margin="20,10,10,0"/>
-                        <TextBlock Text="Dane dotyczące spożycia"
+                        <TextBlock Text="Tak"
                                    Foreground="White"
                                    FontSize="18"
                                    Margin="20,10,10,0"/>
@@ -61,7 +61,7 @@
 
                 </Style>
             </StackPanel.Resources>
-            <TextBlock Text="Naszes"
+            <TextBlock Text="Kolorki"
                    Foreground="White"
                    FontSize="20"
                    HorizontalAlignment="Left"
@@ -70,14 +70,18 @@
                 <Border Width="150"
                         Height="150"
                         Background="#844eff"
-                        CornerRadius="10">
+                        CornerRadius="10"
+                        Name="kolor_1"
+                        MouseLeftButtonUp="kolor_1_MouseLeftButtonUp">
                    
                 </Border>
 
                 <Border Width="150"
                         Height="150"
                         Background="#4e99ff"
-                        CornerRadius="10">
+                        CornerRadius="10"
+                        Name="kolor_2"
+                        MouseLeftButtonDown="kolor_1_MouseLeftButtonUp">
                    
                 </Border>
 
@@ -85,11 +89,15 @@
                         Height="150"
                         Background="#4eff91"
                         CornerRadius="10"
+                        Name="kolor_3"
+                        MouseLeftButtonDown="kolor_1_MouseLeftButtonUp"
                         />
                 <Border Width="150"
                         Height="150"
                         Background="#ecff4e"
                         CornerRadius="10"
+                        Name="kolor_4"
+                        MouseLeftButtonDown="kolor_1_MouseLeftButtonUp"
                         />
 
             </StackPanel>

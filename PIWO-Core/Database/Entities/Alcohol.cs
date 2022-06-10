@@ -15,5 +15,9 @@
         public decimal Volume { get; set; }
         internal AlcoholType Type { get; set; }
         public AlcoholTypeId TypeId { get; set; }
+        public override string ToString()
+        {
+            return Name + " " + Voltage + "%, " + (Volume * 100) + "ml.";
+        }
     }
 }

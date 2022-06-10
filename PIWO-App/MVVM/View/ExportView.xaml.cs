@@ -28,6 +28,7 @@ namespace PIWO_App.MVVM.View
         public ExportView()
         {
             InitializeComponent();
+            fileChooserBtn.IsEnabled = AlcoholContext.IsReady;
         }
         private FileType checkFileType()
         {

@@ -44,7 +44,6 @@ namespace PIWO_Core.Database
                     Id = e,
                     Name = e.ToString()
                 }));
-            
         }
     }
 }
